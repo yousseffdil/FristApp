@@ -41,9 +41,7 @@ class AuthActivity : AppCompatActivity() {
                     PasswordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        // entrar a una futura pantalla donde esté el contenido de la app
-                        // crear pantalla de contenido de la app
-                        val intent = Intent(this, RegisterActivity::class.java)
+                        val intent = Intent(this, MainApp::class.java)
                         startActivity(intent)
                     } else {
                         showAlert()
