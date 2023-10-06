@@ -22,10 +22,10 @@
             android:id="@+id/arrow_back"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:backgroundTint="#00000000"
-            android:background="@drawable/arrow"
             android:layout_gravity="left"
-            />
+            android:background="@drawable/arrow"
+            android:backgroundTint="#00000000"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/titulo"
@@ -38,7 +38,7 @@
             android:textSize="40dp" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/NameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -51,7 +51,7 @@
             tools:ignore="TextSizeCheck" />
 
         <EditText
-            android:id="@+id/editTextSecondName"
+            android:id="@+id/SecondNameE"
             android:layout_width="match_parent"
             android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
 
 
         <EditText
-            android:id="@+id/editTextDNI"
+            android:id="@+id/DNIEditText"
             android:layout_width="match_parent"
             android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             tools:ignore="TextSizeCheck" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/PasswordEditText"
             android:layout_width="match_parent"
             android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"

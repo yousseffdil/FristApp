@@ -46,6 +46,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-crashlytics:18.4.3")
     implementation("com.google.firebase:firebase-analytics:21.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.8.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

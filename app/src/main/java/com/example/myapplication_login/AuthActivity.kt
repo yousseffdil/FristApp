@@ -17,17 +17,16 @@ class AuthActivity : AppCompatActivity() {
 
         //region init
         val btnOpenSignUp = findViewById<Button>(R.id.buttonRegister)
-
         //endregion
         btnOpenSignUp.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        //setup()
+        //Function setup()
         setup()
     }
-
+    //region setup
     private fun setup() {
         title = "Autenticación"
         val buttonLogin = findViewById<Button>(R.id.buttonLogIn)
@@ -35,24 +34,37 @@ class AuthActivity : AppCompatActivity() {
         val PasswordEditText = findViewById<EditText>(R.id.PasswordEditText)
 
         buttonLogin.setOnClickListener {
-            if (!EmailEditText.text.isEmpty() && !PasswordEditText.text.isEmpty()) {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                    EmailEditText.text.toString(),
-                    PasswordEditText.text.toString()
-                ).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val intent = Intent(this, MainApp::class.java)
-                        startActivity(intent)
-                    } else {
-                        showAlert()
+            val email = EmailEditText.text.toString()
+            val password = PasswordEditText.text.toString()
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                FirebaseAuth.getInstance().fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val signInMethods = task.result?.signInMethods
+                            if (signInMethods == null || signInMethods.isEmpty()) {
+                                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener { createUserTask ->
+                                        if (createUserTask.isSuccessful) {
+                                            val intent = Intent(this, MainApp::class.java)
+                                            startActivity(intent)
+                                        } else {
+                                            showAlert()
+                                        }
+                                    }
+                            } else {
+                                showAlert()
+                            }
+                        } else {
+                            showAlert()
+                        }
                     }
-                }
-            }else{
+            } else {
                 showAlert()
             }
         }
     }
-
+    //endregion
     private fun showAlert() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
