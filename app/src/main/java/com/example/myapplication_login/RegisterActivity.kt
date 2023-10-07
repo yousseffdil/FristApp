@@ -20,7 +20,9 @@ class RegisterActivity : AppCompatActivity() {
         var name = findViewById<EditText>(R.id.NameEditText)
         var secondName = findViewById<EditText>(R.id.SecondNameE)
         var DNI = findViewById<EditText>(R.id.DNIEditText)
+        var Phone = findViewById<EditText>(R.id.PhoneEditText)
         var password = findViewById<EditText>(R.id.PasswordEditText)
+
         //endregion
         returnLogIn.setOnClickListener {
             finish()
@@ -31,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
                     "DNI" to DNI.text.toString(),
                     "Name" to name.text.toString(),
                     "Password" to password.text.toString(),
+                    "Phone" to Phone.text.toString(),
                     "SecondName" to secondName.text.toString()
                 )
             ).addOnCompleteListener { task ->
